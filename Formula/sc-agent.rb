@@ -56,14 +56,6 @@ class ScAgent < Formula
     end
   end
 
-  def post_install
-    # Start the service automatically after installation
-    system "brew", "services", "start", "sc-agent"
-  rescue
-    # If brew services fails, it's not critical - user can start manually
-    nil
-  end
-
   service do
     name macos: "com.aikidosecurity.sc-agent"
     run [opt_bin/"sc-agent"]

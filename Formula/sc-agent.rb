@@ -14,7 +14,7 @@ class ScAgent < Formula
       sha256 "62bd46143747edea52b503519915411881dd44fe713a887610df0f01e899ae39"
 
       resource "safe-chain" do
-        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/safe-chain-darwin-amd64"
+        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-amd64"
         sha256 "442414b887740e7c19cec066f2472e6730ea3a5702e76d8b602a9140e8e0a7f6"
       end
     end
@@ -23,7 +23,7 @@ class ScAgent < Formula
       sha256 "912288738971150f71602a35df171b588ed43520134d77c02ffe75f7a7756700"
 
       resource "safe-chain" do
-        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/safe-chain-darwin-arm64"
+        url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-arm64"
         sha256 "d44c266e2c0f24b30c668c1eb693f0b5097e310dfe46050a0cbeb9b295517354"
       end
     end

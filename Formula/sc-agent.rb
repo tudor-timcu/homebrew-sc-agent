@@ -35,40 +35,11 @@ class ScAgent < Formula
     chmod 0755, bin/"sc-agent"
   end
 
-  def post_install
-    # Create plist file for launchd
-    plist_path = "#{ENV['HOME']}/Library/LaunchAgents/com.aikidosecurity.sc-agent.plist"
-    system "mkdir", "-p", File.dirname(plist_path)
-    
-    File.write(plist_path, plist_content)
-    ohai "Created LaunchAgent plist at #{plist_path}"
-    ohai "To start the daemon, run: launchctl load #{plist_path}"
-    ohai "To stop the daemon, run: launchctl unload #{plist_path}"
-  end
-
-  def plist_content
-    <<~PLIST
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>com.aikidosecurity.sc-agent</string>
-        <key>ProgramArguments</key>
-        <array>
-          <string>#{bin}/sc-agent</string>
-        </array>
-        <key>RunAtLoad</key>
-        <true/>
-        <key>KeepAlive</key>
-        <true/>
-        <key>StandardOutPath</key>
-        <string>#{var}/log/sc-agent.log</string>
-        <key>StandardErrorPath</key>
-        <string>#{var}/log/sc-agent.error.log</string>
-      </dict>
-      </plist>
-    PLIST
+  service do
+    run [opt_bin/"sc-agent"]
+    keep_alive true
+    log_path var/"log/sc-agent.log"
+    error_log_path var/"log/sc-agent.error.log"
   end
 
   test do

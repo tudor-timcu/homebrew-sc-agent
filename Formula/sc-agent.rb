@@ -5,13 +5,13 @@
 class ScAgent < Formula
   desc "Aikido Security SC-Agent"
   homepage "https://github.com/AikidoSec/sc-agent"
-  version "2.0.0"
+  version "3.0.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/sc-agent-darwin-amd64"
-      sha256 "62bd46143747edea52b503519915411881dd44fe713a887610df0f01e899ae39"
+      sha256 "1b34ea0663bd1610ac7bc78dab9bd3220c65e590f21d0f821347cf465caeef76"
 
       resource "safe-chain" do
         url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-amd64"
@@ -20,7 +20,7 @@ class ScAgent < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/AikidoSec/sc-agent/releases/download/v#{version}/sc-agent-darwin-arm64"
-      sha256 "912288738971150f71602a35df171b588ed43520134d77c02ffe75f7a7756700"
+      sha256 "33497dd6f9e9e9928a17e2c98ac814be2a43c2594e0f69e0141f96c642ea8f51"
 
       resource "safe-chain" do
         url "https://github.com/AikidoSec/sc-agent/releases/download/v#{ScAgent.version}/safe-chain-darwin-arm64"

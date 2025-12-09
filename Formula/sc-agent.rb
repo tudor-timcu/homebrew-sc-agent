@@ -40,8 +40,9 @@ class ScAgent < Formula
     run [opt_bin/"sc-agent"]
     run_at_load true
     keep_alive true
-    log_path var/"log/sc-agent.log"
-    error_log_path var/"log/sc-agent.error.log"
+    require_root true
+    log_path "/var/log/aikidosecurity/sc-agent.log"
+    error_log_path "/var/log/aikidosecurity/sc-agent.error.log"
   end
 
   test do
